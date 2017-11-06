@@ -21,100 +21,92 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author jperez
  */
-
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    
+
     @Basic(optional = false)
     @NotNull
-    @Size(min=3,max = 20)
+    @Size(min = 3, max = 20)
     @Column(name = "nombres")
     private String nombres;
-    
+
     @Basic(optional = false)
     @NotNull
-    @Size(min=3,max = 20)
+    @Size(min = 3, max = 20)
     @Column(name = "apellidos")
     private String apellidos;
-    
+
     @Basic(optional = false)
     @NotNull
-    @Size(min=8,max = 15)
+    @Size(min = 8, max = 15)
     @Column(name = "num_documento")
     private String numDocumento;
-    
+
     @Basic(optional = false)
     @NotNull
-    @Size(min=6,max = 20)
+    @Size(min = 6, max = 20)
     @Column(name = "email")
     private String email;
-    
+
     @Basic(optional = false)
     @NotNull
-    @Size(min=6,max = 100)
+    @Size(min = 6, max = 100)
     @Column(name = "password")
     private String password;
-    
+
     @Basic(optional = true)
-    @Size(min=5,max = 40)
+    @Size(min = 5, max = 40)
     @Column(name = "direccion")
     private String direccion;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "sueldo_basico")
     private double sueldoBasico;
-    
-    
+
     @Column(name = "activo")
     private Boolean activo;
-    
-    @JoinColumn(name = "id_cargo",referencedColumnName = "id")
-    @OneToOne(optional=false)
+
+    @JoinColumn(name = "id_cargo", referencedColumnName = "id")
+    @OneToOne(optional = false)
     private Cargo cargo;
-    
-    
-    @JoinColumn(name = "id_tipo_documento",referencedColumnName = "id")
-    @OneToOne(optional=false)
+
+    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id")
+    @OneToOne(optional = false)
     private TipoDocumento tipoDocumento;
-    
-    @JoinColumn(name = "id_ciudad",referencedColumnName = "id")
-    @OneToOne(optional=false)
+
+    @JoinColumn(name = "id_ciudad", referencedColumnName = "id")
+    @OneToOne(optional = false)
     private Ciudad ciudad;
-    
-    
-    
+
     /* Relación recursiva */
     //OneToMany
-    @OneToMany(mappedBy ="jefeInmetiato")
+    @OneToMany(mappedBy = "jefeInmetiato")
     private List<Usuario> usuariosList;
-    
-    
-    
+
     //ManyToOne
-    @JoinColumn(name = "id_jefe_inmediato",referencedColumnName = "id")
+    @JoinColumn(name = "id_jefe_inmediato", referencedColumnName = "id")
     @ManyToOne
     private Usuario jefeInmetiato;
-    
-    
+
     // detalle Nomina
-    @OneToMany(mappedBy ="empleado")
+    @OneToMany(mappedBy = "empleado")
     private List<DetalleNomina> detalleNominaList;
-    
-    
+
     //usuarios_has_roles
-    @OneToMany(mappedBy ="usuario")
+    @OneToMany(mappedBy = "usuario")
     private List<UsuariosHasRoles> usuariosHasRolesList;
 
     public Usuario() {
@@ -251,6 +243,7 @@ public class Usuario implements Serializable {
         this.jefeInmetiato = jefeInmetiato;
     }
 
+    @XmlTransient
     public List<DetalleNomina> getDetalleNominaList() {
         return detalleNominaList;
     }
@@ -266,7 +259,5 @@ public class Usuario implements Serializable {
     public void setUsuariosHasRolesList(List<UsuariosHasRoles> usuariosHasRolesList) {
         this.usuariosHasRolesList = usuariosHasRolesList;
     }
-    
-    
-    
+
 }

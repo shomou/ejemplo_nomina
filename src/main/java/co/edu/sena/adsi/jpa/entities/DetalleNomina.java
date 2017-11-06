@@ -27,7 +27,7 @@ public class DetalleNomina implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
 
