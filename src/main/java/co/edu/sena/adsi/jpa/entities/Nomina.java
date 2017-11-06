@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -83,7 +84,7 @@ public class Nomina implements Serializable{
     public void setMes(int mes) {
         this.mes = mes;
     }
-
+@XmlTransient
     public List<DetalleNomina> getDetalleNominaList() {
         return detalleNominaList;
     }

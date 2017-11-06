@@ -32,11 +32,11 @@ public class UsuariosHasRoles implements Serializable{
     @Column(name = "activo")
     private Boolean activo;
     
-    @JoinColumn(name = "id_usuario" ,referencedColumnName = "id")
+    @JoinColumn(name = "id_usuario" ,referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Usuario usuario;
     
-    @JoinColumn(name = "id_rol" ,referencedColumnName = "id")
+    @JoinColumn(name = "id_rol" ,referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Rol rol;
 

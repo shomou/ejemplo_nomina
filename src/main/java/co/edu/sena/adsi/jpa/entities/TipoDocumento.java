@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -77,7 +78,7 @@ public class TipoDocumento implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+@XmlTransient
     public List<Usuario> getUsuariosList() {
         return usuariosList;
     }

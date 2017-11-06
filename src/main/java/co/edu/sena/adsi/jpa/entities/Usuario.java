@@ -81,7 +81,7 @@ public class Usuario implements Serializable {
     private Boolean activo;
     
     @JoinColumn(name = "id_cargo",referencedColumnName = "id")
-    @OneToOne(optional=false, mappedBy = "usuario")
+    @OneToOne(optional=false)
     private Cargo cargo;
     
     

@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -70,6 +71,7 @@ public class Cargo implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public Usuario getUsuario() {
         return usuario;
     }

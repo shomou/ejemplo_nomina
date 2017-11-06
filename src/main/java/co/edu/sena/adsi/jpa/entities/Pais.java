@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 /**
@@ -36,7 +37,7 @@ public class Pais implements Serializable{
     @Basic(optional=false) 
     @NotNull
     @Size(min = 1, max = 60)
-    @Column(name="id")
+    @Column(name="nombre") 
     private String nombre;
     
     
@@ -78,7 +79,7 @@ public class Pais implements Serializable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+@XmlTransient
     public List<Departamento> getDepartamentosList() {
         return departamentosList;
     }

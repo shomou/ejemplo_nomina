@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -83,6 +84,7 @@ public class Ciudad implements Serializable{
         this.departamento = departamento;
     }
 
+    @XmlTransient
     public List<Usuario> getUsuariosList() {
         return usuariosList;
     }
